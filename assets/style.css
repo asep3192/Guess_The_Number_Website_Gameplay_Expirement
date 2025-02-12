@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+}
+
+#body {
+    margin: 10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: black;
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+}
+    
+/*.header { position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: whitesmoke
+/*color:black;*/
+/*text-align: center;
+}*/
+
+/*
+ul.horizontal-list {
+    list-style-type: none;
+    left: 2px;
+    right: 2px;
+    margin:0;
+    padding: 0;
+    display: flex;
+    height: 50px;
+    background-color: whitesmoke;
+    color:black;
+    text-align: center;
+}
+*/
+
+.horizontal-list {
+    list-style-type: none;
+    background-color: whitesmoke;
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+li.navbar {
+    margin: 0 10px;
+    color: black;
+}
+
+li {
+    color: whitesmoke;
+}
+
+li span {
+    color: black;
+}
+
+span {
+    background-color:whitesmoke;
+}
+
+/*@media screen and (prefers-color-scheme: dark) {
+    p { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    p { color: black; }
+}
+@media screen and (prefers-color-scheme: dark) {
+    h1 { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    h1 { color: black; }
+}
+@media screen and (prefers-color-scheme: dark) {
+    p { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    p { color: black; }
+}
+@media screen and (prefers-color-scheme: dark) {
+    h2 { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+   h2 { color: black; }
+}
+@media screen and (prefers-color-scheme: dark) {
+    h3 { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    h3 { color: black; }
+}
+@media screen and (prefers-color-scheme: dark) {
+    h4 { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    h4 { color: black }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    li { color: black; }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    li { color: black; }
+}
+    */
+    @media screen and (prefers-color-scheme: dark) {
+        p { color: black; }
+        span { 
+            color: black;
+            background-color: whitesmoke; 
+        }
+        body {background-color: black; }
+    }
+    
+    @media screen and (prefers-color-scheme: light) {
+        p { color: black; }
+        span { 
+            color: whitesmoke; 
+            background-color: black;
+            
+        }
+        .navbar
+        span {color: whitesmoke;
+            background-color: black;
+        
+        }
+        li 
+        span
+            {color: whitesmoke;
+            background-color: black;
+            
+            }
+            
+            span { 
+                color: whitesmoke; 
+                background-color: black;
+            }
+            
+        body { background-color: whitesmoke; }
+
+    }
