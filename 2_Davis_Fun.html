@@ -147,7 +147,7 @@ return store
 
     </script>
    
-    
+    <header>
     <div id="UnlockedPage" class="hidden">
         <div id="PageBar1" style="background-color: whitesmoke; padding-top: 15px; padding-bottom: 15px;">
             <ul class="horizontal-list " >
@@ -156,13 +156,14 @@ return store
              
              
                 <li class="navbar" style="margin-left: auto;"> <a href="Easy_Gamemode.html"> 
-                <li class="navbar" > <a href="Medium_Easy_Gamemode.html">
-                <li class="navbar" > <a href="Medium_Gamemode.html">  </a></li> </a></li>
-                <li class="navbar" > <a href="Hard_Mode_.html">  </a></li> </a> </li>
-                <li class="navbar" > <a href="Extra_Hard_Mode.html">  </a></li>
+                <li class="navbar" > <a href="GTN_Easy_Gamemode.html">Main Page (First Page created)
+                <li class="navbar" > <a href="GTN_stats_test_EasyGamemode.html"> Main Page Im working on  (GTN_stats_test_EasyGamemode.html)</a></li> </a></li>
+                <li class="navbar" > <a href="testrun.html"> testrun.html </a></li> </a> </li>
+                <li class="navbar" > <a href="2_Davis_Fun.html"> PW Protect Testing - (This Page) </a></li>
               
             </ul>
         </div>
+    </header>
         
         <!--<header> Header Test 
         </header> -->
@@ -201,13 +202,13 @@ return store
     
     <h1>   <span style="color: red;"><WARNING:>&#9888; Warning: </WARNING:></span> <span style="color: white;">This website uses cookies. </span></h1>
 
-    <h1> <span style="color: white;"> Guess The Number</span></h1>
-    <p> <span style="color: white;"> Directions: Guess the mystery number between 0-99. You have 7 guesses. </span></p>
-    <h3><span style="color: white;"><i>Please Note that this website is just a Expirement</i></h3></span>
+    <h1> <!-- <span style="color: white;">--> Guess The Number</span></h1>
+    <p> <!-- <span style="color: white;">-->  Directions: Guess the mystery number between 0-99. You have 7 guesses. </span></p>
+    <h3><!-- <span style="color: white;">--> <i>Please Note that this website is just a Expirement</i></h3></span>
     <input type="number" id="guessInput" placeholder="Guess The Number...">
     <button onclick="makeGuess()">Enter</button>
     <div id="messages"></div>
-    <button id="playAgain" onclick="resetGame()" disabled=""><span style="color: white;">Play Again</button></span>
+    <button id="playAgain" onclick="resetGame()" disabled=""><!-- <span style="color: white;">--> Play Again</button></span>
     
     <!--<div id="stats-container">
         <button onclick="toggleStats()">Stats</button>
@@ -271,7 +272,7 @@ return store
         messages.innerHTML += `<p>${guess} is less than the mystery number.</p>`;
         incorrectGuesses++; // Added this line to increment incorrect guesses
     } else {
-        messages.innerHTML += <span style="color: white;">`<p>That number is correct! It took you ${attempts} tries.</p>`</span>;
+        messages.innerHTML += /*<span style="color: white;"*/`<p>That number is correct! It took you ${attempts} tries.</p>`; 
         correctGuesses++;
         if (attempts === 2) correctOn2nd++;
         if (attempts === 3) correctOn3rd++;
