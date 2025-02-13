@@ -1,0 +1,22 @@
+username = "admin";
+password = "password";
+/* Password changed to 2DAVIS */
+
+inputUsername = "";
+inputPassword = "";
+
+
+
+while (inputUsername != username && inputPassword != password) {
+    let inputUsername = prompt("Please enter your username: ");
+    let inputPassword = prompt("Please enter your password: ");
+
+    if (inputUsername == username && inputPassword == password) {
+        alert("Username & Password Correct, loggin in!");
+        break;
+    } else {
+        alert("Username or Password incorrect, try again :(");
+    }
+}
+
+body.style.removeProperty("display");

@@ -364,3 +364,6 @@ Second Code Change
     </script>
 </body>
 </html>
+
+----------------------------------------------------------------------------------------Cookies more info-----------------------------------------------------
+This website uses cookies to keep the stats data updated at all times and when you return to it later. If you would like to clear these cookies then you can click the 'reset stats' button to clear stats info and cookies.
