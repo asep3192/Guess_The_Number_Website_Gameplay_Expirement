@@ -39,7 +39,8 @@
     </div>
 
     <script>
-        const correctPassword = "000000718478871019811210897121"; // Set your correct password here
+        const correctPassword1 = "000000718478871019811210897121"; // Set your correct password here
+        const correctPassword2 = "000077101101112495051"; // Set your 2nd correct password here
         let failedAttempts = 0;
         const maxAttempts = 25;
         let enterKeyEnabled = true;
@@ -47,7 +48,7 @@
         $(document).ready(function() {
             const checkPassword = () => {
                 const inputPassword = $("#password-input").val();
-                if (checkPass(correctPassword)) {
+                if (checkPass(correctPassword1) || checkPass(correctPassword2)) {
                     $("#message").text("Password Correct ✔").addClass("correct");
                     $("#login-container").css({
                         transform: "translateY(-100vh)",
