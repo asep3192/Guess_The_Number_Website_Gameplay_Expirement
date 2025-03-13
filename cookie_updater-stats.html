@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #messages { margin-top: 20px; }
+        #stats-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        #stats {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        #resetStats {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="stats-container">
+        <button onclick="toggleStats()">Stats</button>
+        <div id="stats">
+            <p>Correct Guesses: <span id="correctGuesses">0</span></p>
+            <p>Incorrect Guesses: <span id="incorrectGuesses">0</span></p>
+            <p>Correct on 2nd Guess: <span id="correctOn2nd">0</span></p>
+            <p>Correct on 3rd Guess: <span id="correctOn3rd">0</span></p>
+            <p>Rounds Played: <span id="roundsPlayed">0</span></p>
+            <p>Cookies Used: <span id="cookieUsage">0 KB</span></p>
+            <button id="resetStats" onclick="resetStats()">Reset Stats</button>
+        </div>
+    </div>
+
+    <script>
+        // ****
+// ***
+function updateCookieUsage() {
+            let allCookies = document.cookie;
+            let size = new Blob([allCookies]).size / 1024; // Convert to KB
+            document.getElementById("cookieUsage").innerText = size.toFixed(2) + " KB";
+// ****
+        }
+
+        // ****
+function resetStats() {
+            document.cookie.split("; ").forEach(cookie => {
+                document.cookie = cookie.replace(/=.*/, "=;expires=" + new Date(0).toUTCString());
+            });
+            updateCookieUsage(); // Update after clearing cookies
+        }
+
+        function toggleStats() {
+            let statsDiv = document.getElementById("stats");
+            statsDiv.style.display = statsDiv.style.display === "none" ? "block" : "none";
+        }
+
+        setInterval(updateCookieUsage, 1000);
+// ***
+// ****
+// ***
+// **** // Actively update every second
+    </script>
+</body>
+</html>
