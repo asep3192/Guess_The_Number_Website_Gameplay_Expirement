@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess The Number</title>
+    
+        <!-- This is a copy of the main page 'autostatsupdate_testing_GTN_Easy.html'-->
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         #messages { margin-top: 20px; }
@@ -24,23 +26,25 @@
             margin-top: 10px;
         }
     </style>
-
 </head>
-<body> 
+<body>
     <style></style>  
-    <link rel="icon" type="image/x-icon" href="assets/Davis_.5.ico">
-    <!-- <link rel="stylesheet" href="assets/style.css">-->
+    <link rel="icon" type="image/x-icon" href="assets/">
+   <!-- <link rel="stylesheet" href="assets/style.css">-->
     <link rel="stylesheet" href="assets/2Davis.css">
-    
-    <h1>   <span style="color: red;"><WARNING:>&#9888; Warning: </WARNING:></span> <span style="color: white;">This website uses cookies. </span></h1>
+    </style>
+   <header>
 
+    <h1>   <span style="color: red;"><WARNING:>&#9888; Warning: </WARNING:></span> <span style="color: white;">This website uses cookies. </span></h1>
+</header>
+    </h1>
     <h1>Guess The Number</h1>
     <p>Directions: Guess the mystery number between 0-99. You have 7 guesses.</p>
     <h3><i>Please Note that this website is just a Expirement</i></h3>
     <input type="number" id="guessInput" placeholder="Guess The Number...">
-    <button onclick="makeGuess()">Enter</button>
+    <button onclick="makeGuess()" disabled>Enter</button>
     <div id="messages"></div>
-    <button id="playAgain" onclick="resetGame()" disabled="">Play Again</button>
+    <button id="playAgain" onclick="resetGame()" disabled>Play Again</button>
     
     <!--<div id="stats-container">
         <button onclick="toggleStats()">Stats</button>
@@ -54,38 +58,38 @@
         --><!--hhhhh-->
          <div id="stats-container"> 
             <button onclick="toggleStats()">Stats</button> 
-            <div id="stats" style="display: none;"> <p>Correct Guesses: <span id="correctGuesses">0</span></p> 
+            <div id="stats"> <p>Correct Guesses: <span id="correctGuestylsses">0</span></p> 
             <p>Incorrect Guesses: <span id="incorrectGuesses">0</span></p> <p>Correct on 2nd Guess: <span id="correctOn2nd">0</span></p> <p>Correct on 3rd Guess: <span id="correctOn3rd">0</span></p> 
             <p>Rounds Played: <span id="roundsPlayed">0</span></p>
          <button id="resetStats" onclick="resetStats()">Reset Stats</button>
-    
-    <!--Encryped New Password (Options): GTNwebplay or GTNWebplay or GTN-Webplay-->
+
+
         </div>
     </div>
-    
+
     <script>
         let mysteryNumber = Math.floor(Math.random() * 100);
         let attempts = 0;
         let maxAttempts = 7;
-    
+
         let correctGuesses = localStorage.getItem("correctGuesses") || 0;
         let incorrectGuesses = localStorage.getItem("incorrectGuesses") || 0;
         let correctOn2nd = localStorage.getItem("correctOn2nd") || 0;
         let correctOn3rd = localStorage.getItem("correctOn3rd") || 0;
         let roundsPlayed = localStorage.getItem("roundsPlayed") || 0;
-    
+
         const guessInput = document.getElementById("guessInput");
         const guessButton = document.querySelector("button[onclick='makeGuess()']");
         const playAgainButton = document.getElementById("playAgain");
         guessInput.disabled = false;
         guessButton.disabled = false;
-    
+
         guessInput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 makeGuess();
             }
         });
-    
+
      function makeGuess() {
     const guess = parseInt(guessInput.value, 10);
     const messages = document.getElementById("messages");
@@ -94,9 +98,9 @@
         messages.innerHTML += `<p>Please enter a valid number between 0-99.</p>`;
         return;
     }
-    
+
     attempts++;
-    
+
     if (guess > mysteryNumber) {
         messages.innerHTML += `<p>${guess} is greater than the mystery number.</p>`;
         incorrectGuesses++; // Added this line to increment incorrect guesses
@@ -113,16 +117,16 @@
         lockGame();
         return;
     }
-    
+
     updateStats(); // Added this line to ensure stats update after an incorrect guess
-    
+
     if (attempts === 4) {
         playAgainButton.disabled = false;
     }
-    
+
     if (attempts === maxAttempts) {
         messages.innerHTML += `<p>Game Over</p>`;
-        messages.innerHTML += `<p>To play again, press the ok button on the pop up. </p>`;
+        messages.innerHTML += `<p>To play again, press any number besides 1.</p>`;
         roundsPlayed++;
         updateStats();
         lockGame();
@@ -134,9 +138,9 @@
             }
         }, 100);
     }
-    }
-    
-    function toggleStats() {
+}
+
+function toggleStats() {
     let statsDiv = document.getElementById("stats");
     let statsButton = document.querySelector("button[onclick='toggleStats()']");
     if (statsDiv.style.display === "none") {
@@ -146,14 +150,14 @@
         statsDiv.style.display = "none";
         statsButton.innerText = "Stats"; // Change button text when stats are hidden
     }
-    }
-    
-    
+}
+
+
         function lockGame() {
             guessInput.disabled = true;
             guessButton.disabled = true;
         }
-    
+
         function resetGame() {
             mysteryNumber = Math.floor(Math.random() * 100);
             attempts = 0;
@@ -163,7 +167,7 @@
             guessButton.disabled = false;
             playAgainButton.disabled = true;
         }
-    
+
         function updateStats() {
             document.getElementById("correctGuesses").innerText = correctGuesses;
             document.getElementById("incorrectGuesses").innerText = incorrectGuesses;
@@ -177,8 +181,9 @@
             localStorage.setItem("correctOn3rd", correctOn3rd);
             localStorage.setItem("roundsPlayed", roundsPlayed);
         }
-    
+
         function resetStats() {
+               localStorage.clear(); // This Clears the cookies from the stats
             correctGuesses = 0;
             incorrectGuesses = 0;
             correctOn2nd = 0;
@@ -186,38 +191,20 @@
             roundsPlayed = 0;
             updateStats();
         }
-    
+
         function toggleStats() {
             let statsDiv = document.getElementById("stats");
             statsDiv.style.display = statsDiv.style.display === "none" ? "block" : "none";
         }
-    
+
         updateStats();
     </script>
-    
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Guess The Number</title>
-        <style>
-            body { font-family: Arial, sans-serif; text-align: center; }
-            #messages { margin-top: 20px; }
-            #stats-container {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-            }
-            #stats {
-                display: none;
-                background: rgba(0, 0, 0, 0.7);
-                color: white;
-                padding: 10px;
-                border-radius: 5px;
-                margin-top: 5px;
-            }
-            #resetStats {
-                margin-top: 10px;
-            }
-        </style>
-    
-    
-    </body>
+</body>
+</html>
+
+<!--
+AI Disclaimer
+
+This Website was built using the Help of AI 
+
+-->
