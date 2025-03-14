@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error: 503</title>
+    <link rel="icon" type="image/x-icon" href="assets/Sad_Face_Black_BKD_Light_.ico">
+    <body style="background-color:black;">
+
+</head>
+<body>
+   <h1> Error; 503 </h1>
+     <span style="color:whitesmoke"><h1> Sorry,</h1> </span>
+     <span style="color:whitesmoke"> <h1> Guess The Number Online Gameplay Expirement is currently offiine </h1>
+    <span style="color:whitesmoke"> <p> Check later </p>
+
+     <span style="color:whitesmoke"> <h2> Error; <!--<span style=backround-color: blue;>--></span> 503 :(</h2> </span>
+     <span style="color:whitesmoke"> 
+</body>
+</html>
