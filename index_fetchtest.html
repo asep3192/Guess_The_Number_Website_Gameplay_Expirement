@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>503 Error - </title>
+  <!--  <link rel="stylesheet" href="assets/style.css">-->
+</head>
+<body>
+    <div id="content">Loading...</div>
+
+    <script>
+        // Fetch the 503.html file and insert its content into the page
+        fetch('503.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = "<h1>503: Error</h1> <br> dev note: fetch error </br>";
+            });
+    </script>
+<h2> This is my index code</h2>
+<p> Lets find out if it worked</p>
+<span style="color:whitesmoke"><h1> This is in a span</h1></span>
+</body>
+</html>

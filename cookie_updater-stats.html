@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,4 +69,262 @@ function resetStats() {
 // **** // Actively update every second
     </script>
 </body>
+</html>-->
+<!--Updated Code-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number - Cookie Updater Tester (stats)</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #messages { margin-top: 20px; }
+        #stats-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        #stats {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        #resetStats {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="stats-container">
+        <button onclick="toggleStats()">Stats</button>
+        <div id="stats">
+            <p>Correct Guesses: <span id="correctGuesses">0</span></p>
+            <p>Incorrect Guesses: <span id="incorrectGuesses">0</span></p>
+            <p>Correct on 2nd Guess: <span id="correctOn2nd">0</span></p>
+            <p>Correct on 3rd Guess: <span id="correctOn3rd">0</span></p>
+<!--***-->
+<!--<p>Rounds Played: <span id="roundsPlayed">0</span></p>
+            <p>Cookies Used: <span id="cookieUsage">0 KB</span></p>
+<!-- ****-->
+
+       <!--     <button id="resetStats" onclick="resetStats()">Reset Stats</button>
+        </div>
+    </div>
+
+    <script>
+// ***
+function updateCookieUsage() {
+            
+let allCookies = document.cookie;
+            let size = new Blob([allCookies]).size / 1024; // Convert to KB
+            document.getElementById("cookieUsage").innerText = size.toFixed(2) + " KB";
+// ****
+
+
+
+        }
+
+// ***
+function resetStats() {
+            
+document.cookie.split("; ").forEach(cookie => {
+                document.cookie = cookie.replace(/=.*/, "=;expires=" + new Date(0).toUTCString());
+            });
+            updateCookieUsage(); // Update after clearing cookies
+// ****
+
+        }
+
+        function toggleStats() {
+            let statsDiv = document.getElementById("stats");
+            statsDiv.style.display = statsDiv.style.display === "none" ? "block" : "none";
+        }
+
+        
+
+// ***
+setInterval(updateCookieUsage, 1000);
+// ****
+
+
+
+
+ // Actively update every second
+    </script>
+</body>
 </html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #messages { margin-top: 20px; }
+        #stats-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        #stats {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <style></style>  
+    <link rel="icon" type="image/x-icon" href="assets/">
+   <!-- <link rel="stylesheet" href="assets/style.css">-->
+    <link rel="stylesheet" href="assets/2Davis.css">
+    </style>
+   <header>
+
+    <h1>   <span style="color: red;"><WARNING:>&#9888; Warning: </WARNING:></span> <span style="color: white;">This website uses cookies. </span></h1>
+</header>
+    </h1>
+    <h1>Guess The Number</h1>
+    <p>Directions: Guess the mystery number between 0-99. You have 7 guesses.</p>
+    <input type="number" id="guessInput" placeholder="Guess The Number...">
+    <button onclick="makeGuess()">Enter</button>
+    <div id="messages"></div>
+    <button id="playAgain" onclick="resetGame()" disabled>Play Again</button>
+    
+    <div id="stats-container"> 
+        <button onclick="toggleStats()">Stats</button> 
+        <div id="stats"> 
+            <p>Correct Guesses: <span id="correctGuesses">0</span></p> 
+            <p>Incorrect Guesses: <span id="incorrectGuesses">0</span></p> 
+            <p>Rounds Played: <span id="roundsPlayed">0</span></p>
+            <p>Cookies Used: <span id="cookieUsage">0 KB</span></p>
+            <button id="resetStats" onclick="resetStats()">Reset Stats</button>
+        </div>
+    </div>
+
+    <script>
+        let mysteryNumber = Math.floor(Math.random() * 100);
+        let attempts = 0;
+        const maxAttempts = 7;
+        let incorrectGuesses = localStorage.getItem("incorrectGuesses") || 0;
+        let correctGuesses = localStorage.getItem("correctGuesses") || 0;
+        let roundsPlayed = localStorage.getItem("roundsPlayed") || 0;
+        
+        const guessInput = document.getElementById("guessInput");
+        const guessButton = document.querySelector("button[onclick='makeGuess()']");
+        const playAgainButton = document.getElementById("playAgain");
+        guessInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                makeGuess();
+            }
+        });
+
+        function makeGuess() {
+            const guess = parseInt(guessInput.value, 10);
+            const messages = document.getElementById("messages");
+            
+            if (isNaN(guess) || guess < 0 || guess > 99) {
+                messages.innerHTML += `<p>Please enter a valid number between 0-99.</p>`;
+                return;
+            }
+
+            attempts++;
+
+            if (guess > mysteryNumber) {
+                messages.innerHTML += `<p>${guess} is greater than the mystery number.</p>`;
+                incorrectGuesses++;
+            } else if (guess < mysteryNumber) {
+                messages.innerHTML += `<p>${guess} is less than the mystery number.</p>`;
+                incorrectGuesses++;
+            } else {
+                messages.innerHTML += `<p>That number is correct! It took you ${attempts} tries.</p>`;
+                correctGuesses++;
+                roundsPlayed++;
+                updateStats();
+                lockGame();
+                return;
+            }
+            
+            updateStats();
+
+            if (attempts >= 4) {
+                playAgainButton.disabled = false;
+            }
+
+            if (attempts >= maxAttempts) {
+                messages.innerHTML += `<p>Game Over! The number was ${mysteryNumber}.</p>`;
+                roundsPlayed++;
+                updateStats();
+                lockGame();
+                setTimeout(() => {
+                    let playAgain = confirm("Press OK to play again, or Cancel to stay on this page");
+                    if (playAgain) {
+                        resetGame();
+                    }
+                }, 100);
+            }
+        }
+
+        function lockGame() {
+            guessInput.disabled = true;
+            guessButton.disabled = true;
+        }
+
+        function resetGame() {
+            mysteryNumber = Math.floor(Math.random() * 100);
+            attempts = 0;
+            document.getElementById("messages").innerHTML = "";
+            guessInput.value = "";
+            guessInput.disabled = false;
+            guessButton.disabled = false;
+            playAgainButton.disabled = true;
+        }
+
+        function updateStats() {
+            document.getElementById("correctGuesses").innerText = correctGuesses;
+            document.getElementById("incorrectGuesses").innerText = incorrectGuesses;
+            document.getElementById("roundsPlayed").innerText = roundsPlayed;
+            document.getElementById("cookieUsage").innerText = getCookieSize() + " KB";
+            localStorage.setItem("correctGuesses", correctGuesses);
+            localStorage.setItem("incorrectGuesses", incorrectGuesses);
+            localStorage.setItem("roundsPlayed", roundsPlayed);
+        }
+
+        function resetStats() {
+            localStorage.clear();
+            correctGuesses = 0;
+            incorrectGuesses = 0;
+            roundsPlayed = 0;
+            updateStats();
+        }
+
+        function toggleStats() {
+            let statsDiv = document.getElementById("stats");
+            statsDiv.style.display = statsDiv.style.display === "none" ? "block" : "none";
+        }
+
+        function getCookieSize() {
+            let allCookies = document.cookie;
+            return (new Blob([allCookies]).size / 1024).toFixed(2);
+        }
+
+        updateStats();
+        setInterval(() => document.getElementById("cookieUsage").innerText = getCookieSize() + " KB", 1000);
+    </script>
+</body>
+</html>
+
+<!--
+AI Disclaimer2
+
+This Website was built using the Help of AI 
+
+-->
